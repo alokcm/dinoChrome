@@ -1,7 +1,7 @@
 System.register(["cc"], function (_export, _context) {
   "use strict";
 
-  var _cclegacy, _decorator, Component, Node, Vec3, Prefab, instantiate, UITransform, _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2, _descriptor3, _temp, _crd, ccclass, property, GamePlay;
+  var _cclegacy, _decorator, Component, Node, Vec3, Prefab, instantiate, UITransform, Intersection2D, Label, director, _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2, _descriptor3, _temp, _crd, ccclass, property, GamePlay;
 
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
 
@@ -27,6 +27,9 @@ System.register(["cc"], function (_export, _context) {
       Prefab = _cc.Prefab;
       instantiate = _cc.instantiate;
       UITransform = _cc.UITransform;
+      Intersection2D = _cc.Intersection2D;
+      Label = _cc.Label;
+      director = _cc.director;
     }],
     execute: function () {
       _crd = true;
@@ -69,47 +72,43 @@ System.register(["cc"], function (_export, _context) {
 
           _defineProperty(_assertThisInitialized(_this), "arrayOfObstacles", []);
 
+          _defineProperty(_assertThisInitialized(_this), "usedObstacles", []);
+
+          _defineProperty(_assertThisInitialized(_this), "initScore", 0);
+
           _defineProperty(_assertThisInitialized(_this), "dinoBoundingBox", void 0);
 
           _defineProperty(_assertThisInitialized(_this), "obsBoundingBox", void 0);
 
           _defineProperty(_assertThisInitialized(_this), "time", 0);
 
-          _defineProperty(_assertThisInitialized(_this), "popTime", 50);
+          _defineProperty(_assertThisInitialized(_this), "popTime", 150);
 
-          _defineProperty(_assertThisInitialized(_this), "usedObstacles", []);
-
-          _defineProperty(_assertThisInitialized(_this), "i", -1);
+          _defineProperty(_assertThisInitialized(_this), "birdPos", void 0);
 
           return _this;
         }
 
         var _proto = GamePlay.prototype;
 
-        // Intersection2D.rectRect(
-        //     container.getComponent(UITransform)?.getBoundingBoxToWorld(),
-        //     this.dragable.item.getComponent(UITransform)?.getBoundingBoxToWorld()!
-        //     );
-
-        /*moveObstacle(obs)
-        {
-            let i=-1;
-            let a = setInterval(() => {
-                obs.setPosition(new Vec3(this.vecX.x+(--i*20),this.vecX.y,this.vecX.z));
-                if(obs.getPosition().x < -500)
-                {
-                    this.arrayOfObstacles.push(obs);
-                    obs.setPosition(new Vec3(548.527,-193.655,1));
-                    i=-1;
-                    clearInterval(a);
-                    console.log('stopped the scheduler');
-                }
-            },90);
-        }*/
         _proto.startTheGame = function startTheGame() {
-          // let i=-1;
+          var _this2 = this;
+
+          this.node.getChildByName('restart').active = false;
+          this.node.getChildByName('GameOver').getComponent(Label).string = 'Game Started';
+          setTimeout(function () {
+            _this2.node.getChildByName('GameOver').active = false;
+            _this2.node.getChildByName('GameOver').getComponent(Label).string = 'Game Over !';
+          }, 2500);
+          this.initScore = 0;
           this.addAndMoveObstacles();
-          this.schedule(this.addAndMoveObstacles, 0.1);
+          this.schedule(this.updateScore, 0.3);
+          this.schedule(this.addAndMoveObstacles, 0.001);
+        };
+
+        _proto.updateScore = function updateScore() {
+          this.initScore += 2;
+          this.node.getChildByName('currentScore').getComponent(Label).string = "" + this.initScore;
         };
 
         _proto.addAndMoveObstacles = function addAndMoveObstacles() {
@@ -119,31 +118,58 @@ System.register(["cc"], function (_export, _context) {
             this.time = 0;
             var popped = this.arrayOfObstacles.shift();
             popped.setPosition(new Vec3(548.527, -193.655, 1));
-            this.usedObstacles.push(popped); // this.obsBoundingBox = popped.getComponent(UITransform).getBoundingBoxToWorld();
-            // console.log(`${this.dinoBoundingBox} ${this.obsBoundingBox}`);
-            //pop one obstacle from unsed and add to used ostacles.
+            this.usedObstacles.push(popped);
           }
 
           this.updatePosOfUsedObstacles();
         };
 
         _proto.updatePosOfUsedObstacles = function updatePosOfUsedObstacles() {
-          var _this2 = this;
+          var _this3 = this;
 
-          //if(usedObs.length >0){
           if (this.usedObstacles.length > 0) {
             this.usedObstacles.forEach(function (element) {
+              var _this3$node$getChildB, _element$getComponent;
+
               console.log('for each called');
-              element.setPosition(new Vec3(element.getPosition().x - 10, -193.655, 1));
+              element.setPosition(new Vec3(element.getPosition().x - 3, -193.655, 1));
 
               if (element.getPosition.x < -500) {
                 element.setPosition(new Vec3(548.527, -193.655, 1));
 
-                _this2.arrayOfObstacles.push(element);
+                _this3.arrayOfObstacles.push(element);
               }
-            });
-          } //if position is out of screen add to un used obstacles.
 
+              if (Intersection2D.rectRect((_this3$node$getChildB = _this3.node.getChildByName('DinoStart').getComponent(UITransform)) === null || _this3$node$getChildB === void 0 ? void 0 : _this3$node$getChildB.getBoundingBoxToWorld(), (_element$getComponent = element.getComponent(UITransform)) === null || _element$getComponent === void 0 ? void 0 : _element$getComponent.getBoundingBoxToWorld()) == true) {
+                console.log('collsion done');
+
+                _this3.unschedule(_this3.addAndMoveObstacles);
+
+                _this3.unschedule(_this3.updateScore);
+
+                director.pause();
+                _this3.node.getChildByName('GameOver').active = true;
+                _this3.node.getChildByName('restart').active = true;
+              }
+            }); //this.node.getChildByName('Bird1').setPosition(new Vec3(this.birdPos.x-3,this.birdPos.y,this.birdPos.z));
+          }
+        };
+
+        _proto.restartGame = function restartGame() {
+          var _this4 = this;
+
+          director.resume();
+          console.log('button clicked');
+          console.log(this.usedObstacles);
+          this.usedObstacles.forEach(function (element) {
+            element.setPosition(new Vec3(548.527, -193.655, 1));
+
+            _this4.arrayOfObstacles.push(element);
+          });
+          this.usedObstacles = [];
+          console.log(this.usedObstacles);
+          this.dinoBoundingBox = this.node.getChildByName('DinoStart').setPosition(new Vec3(-337.263, -200.634, 1));
+          this.startTheGame();
         };
 
         _proto.start = function start() {
@@ -156,12 +182,12 @@ System.register(["cc"], function (_export, _context) {
             this.arrayOfObstacles[i].setPosition(new Vec3(548.527, -193.655, 1));
           }
 
-          this.dinoBoundingBox = this.node.getChildByName('DinoStart').getComponent(UITransform).getBoundingBoxToWorld(); //console.log(this.arrayOfObstacles);
+          this.dinoBoundingBox = this.node.getChildByName('DinoStart').getComponent(UITransform).getBoundingBoxToWorld();
+          this.birdPos = this.node.getChildByName('Bird1').getPosition();
+          this.startTheGame();
         };
 
-        _proto.onLoad = function onLoad() {
-          this.node.on(Node.EventType.MOUSE_DOWN, this.startTheGame, this);
-        } // update (deltaTime: number) {
+        _proto.onLoad = function onLoad() {} // update (deltaTime: number) {
         //     // [4]
         // }
         ;

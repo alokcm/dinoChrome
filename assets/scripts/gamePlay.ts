@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, SpriteFrame, systemEvent, SystemEvent, KeyCode, Vec3, Prefab, instantiate, CCInteger, UITransform, UIComponent, UIModelComponent } from 'cc';
+import { _decorator, Component, Node, SpriteFrame, systemEvent, SystemEvent, KeyCode, Vec3, Prefab, instantiate, CCInteger, UITransform, UIComponent, UIModelComponent, Intersection2D, Label, director, Button, SystemEventType, UIOpacityComponent } from 'cc';
 const { ccclass, property } = _decorator;
 
 /**
@@ -37,42 +37,32 @@ export class GamePlay extends Component {
 
     vecX : any;
     arrayOfObstacles : any =  [];
+    usedObstacles : any = [];
+    initScore = 0;
     dinoBoundingBox : any;
     obsBoundingBox : any;
     time = 0;
-    popTime = 50;
-    usedObstacles : any = [];
-    i = -1;
-
-
-    // Intersection2D.rectRect(
-    //     container.getComponent(UITransform)?.getBoundingBoxToWorld(),
-    //     this.dragable.item.getComponent(UITransform)?.getBoundingBoxToWorld()!
-    //     );
-
-
-    /*moveObstacle(obs)
-    {
-        let i=-1;
-        let a = setInterval(() => {
-            obs.setPosition(new Vec3(this.vecX.x+(--i*20),this.vecX.y,this.vecX.z));
-            if(obs.getPosition().x < -500)
-            {
-                this.arrayOfObstacles.push(obs);
-                obs.setPosition(new Vec3(548.527,-193.655,1));
-                i=-1;
-                clearInterval(a);
-                console.log('stopped the scheduler');
-            }
-        },90);
-    }*/
-
+    popTime = 150;
+    birdPos : any;
+   
     startTheGame()
     {
-        // let i=-1;
-
+        this.node.getChildByName('restart').active = false;
+        this.node.getChildByName('GameOver').getComponent(Label).string = 'Game Started';
+        setTimeout( () => {
+            this.node.getChildByName('GameOver').active = false;
+            this.node.getChildByName('GameOver').getComponent(Label).string = 'Game Over !';
+        },2500)
+        this.initScore = 0;
         this.addAndMoveObstacles();
-        this.schedule(this.addAndMoveObstacles,0.1);
+        this.schedule(this.updateScore,0.3);
+        this.schedule(this.addAndMoveObstacles,0.001);
+    }
+
+    updateScore()
+    {
+        this.initScore+=2;
+        this.node.getChildByName('currentScore').getComponent(Label).string =`${this.initScore}`;
     }
 
     addAndMoveObstacles(){
@@ -84,36 +74,58 @@ export class GamePlay extends Component {
             let popped = this.arrayOfObstacles.shift();
             popped.setPosition(new Vec3(548.527,-193.655,1));
             this.usedObstacles.push(popped);
-            // this.obsBoundingBox = popped.getComponent(UITransform).getBoundingBoxToWorld();
-            // console.log(`${this.dinoBoundingBox} ${this.obsBoundingBox}`);
-            //pop one obstacle from unsed and add to used ostacles.
         }
+        
         this.updatePosOfUsedObstacles();
     }
 
     updatePosOfUsedObstacles(){
-
-        //if(usedObs.length >0){
-        
+            
         if(this.usedObstacles.length > 0)
         {
             this.usedObstacles.forEach(element =>
                 {
                     console.log('for each called');
-                    element.setPosition(new Vec3(element.getPosition().x-10,-193.655,1))
+                    element.setPosition(new Vec3(element.getPosition().x-3,-193.655,1))
                     if(element.getPosition.x < -500)
                     {
                         element.setPosition(new Vec3(548.527,-193.655,1));
                         this.arrayOfObstacles.push(element);
                     }
+
+                    if(Intersection2D.rectRect(
+                        this.node.getChildByName('DinoStart').getComponent(UITransform)?.getBoundingBoxToWorld(),
+                        element.getComponent(UITransform)?.getBoundingBoxToWorld()!
+                        ) == true){
+                            console.log('collsion done');
+                            this.unschedule(this.addAndMoveObstacles);
+                            this.unschedule(this.updateScore);
+                            director.pause();
+                            this.node.getChildByName('GameOver').active = true;
+                            this.node.getChildByName('restart').active = true;
+                        }
                 });
+                //this.node.getChildByName('Bird1').setPosition(new Vec3(this.birdPos.x-3,this.birdPos.y,this.birdPos.z));
         }
-        //if position is out of screen add to un used obstacles.
+    }
+
+    restartGame()
+    {
+        director.resume();
+        console.log('button clicked');
+        console.log(this.usedObstacles);
+        this.usedObstacles.forEach(element => {
+            element.setPosition(new Vec3(548.527,-193.655,1));
+            this.arrayOfObstacles.push(element);
+        });
+        this.usedObstacles = [];
+        console.log(this.usedObstacles);
+        this.dinoBoundingBox = this.node.getChildByName('DinoStart').setPosition(new Vec3(-337.263,-200.634,1));
+        this.startTheGame();
     }
 
     start () {
         this.vecX = this.cactus.getPosition();
-
         for(let i=0;i<this.maxNoOfObstacles;i++)
         {
             let j = Math.floor(Math.random() * (this.cactusPrefab.length-1 - 0 + 1)) + 0;
@@ -124,12 +136,13 @@ export class GamePlay extends Component {
         }
 
         this.dinoBoundingBox = this.node.getChildByName('DinoStart').getComponent(UITransform).getBoundingBoxToWorld();
-        //console.log(this.arrayOfObstacles);
+        this.birdPos = this.node.getChildByName('Bird1').getPosition();
+        this.startTheGame();
     }
 
     onLoad()
     {
-        this.node.on(Node.EventType.MOUSE_DOWN,this.startTheGame,this);
+
     }
     // update (deltaTime: number) {
     //     // [4]

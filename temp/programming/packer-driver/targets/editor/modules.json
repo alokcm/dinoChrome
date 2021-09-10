@@ -1,6 +1,6 @@
 {
   "cce:/internal/x/cc": {
-    "mTimestamp": 20930.660260000004,
+    "mTimestamp": 14426.759329998866,
     "chunkId": "quick-pack:/cce/internal/x/cc.js",
     "imports": [
       {
@@ -389,7 +389,7 @@
     ]
   },
   "cce:/internal/x/prerequisite-imports": {
-    "mTimestamp": 31513303.209253002,
+    "mTimestamp": 22435533.099385,
     "chunkId": "quick-pack:/cce/internal/x/prerequisite-imports.js",
     "imports": [
       {
@@ -436,7 +436,7 @@
     ]
   },
   "file:///Users/naushad/Dragon/assets/scripts/dino.ts": {
-    "mTimestamp": 1631168357104.1597,
+    "mTimestamp": 1631260512884.9958,
     "chunkId": "assets/scripts/dino.js",
     "imports": [
       {
@@ -471,7 +471,7 @@
     ]
   },
   "file:///Users/naushad/Dragon/assets/scripts/gamePlay.ts": {
-    "mTimestamp": 1631192407154.508,
+    "mTimestamp": 1631278759489.7275,
     "chunkId": "assets/scripts/gamePlay.js",
     "imports": [
       {
@@ -482,11 +482,11 @@
         "loc": {
           "start": {
             "line": 2,
-            "column": 174
+            "column": 252
           },
           "end": {
             "line": 2,
-            "column": 178
+            "column": 256
           }
         }
       }
