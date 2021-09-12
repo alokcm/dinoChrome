@@ -1,4 +1,18 @@
 {
+  "assets/scripts/dino.js": {
+    "imports": {
+      "cc": "quick-pack:/cce/internal/x/cc.js"
+    },
+    "physicalLocation": "fs/0/assets/scripts/dino.js",
+    "mTimestamp": 1631447772850
+  },
+  "assets/scripts/gamePlay.js": {
+    "imports": {
+      "cc": "quick-pack:/cce/internal/x/cc.js"
+    },
+    "physicalLocation": "fs/0/assets/scripts/gamePlay.js",
+    "mTimestamp": 1631447773030
+  },
   "quick-pack:/cce/internal/x/cc.js": {
     "imports": {
       "__unresolved_0": {
@@ -87,16 +101,9 @@
       }
     },
     "physicalLocation": "cce/internal/x/cc.js",
-    "mTimestamp": 1631256371284,
+    "mTimestamp": 1631467933582,
     "isEntry": true,
     "exposeAs": "cce:/internal/x/cc"
-  },
-  "assets/scripts/dino.js": {
-    "imports": {
-      "cc": "quick-pack:/cce/internal/x/cc.js"
-    },
-    "physicalLocation": "fs/0/assets/scripts/dino.js",
-    "mTimestamp": 1631260519938
   },
   "quick-pack:/cce/internal/x/prerequisite-imports.js": {
     "imports": {
@@ -104,15 +111,8 @@
       "__unresolved_1": "assets/scripts/gamePlay.js"
     },
     "physicalLocation": "cce/internal/x/prerequisite-imports.js",
-    "mTimestamp": 1631278761327,
+    "mTimestamp": 1631467933637,
     "isEntry": true,
     "exposeAs": "cce:/internal/x/prerequisite-imports"
-  },
-  "assets/scripts/gamePlay.js": {
-    "imports": {
-      "cc": "quick-pack:/cce/internal/x/cc.js"
-    },
-    "physicalLocation": "fs/0/assets/scripts/gamePlay.js",
-    "mTimestamp": 1631278761509
   }
 }

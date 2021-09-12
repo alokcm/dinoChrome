@@ -1,5 +1,5 @@
 
-import { _decorator, Component, Node, SpriteFrame, systemEvent, SystemEvent, KeyCode, Vec3, Prefab, instantiate, CCInteger, UITransform, UIComponent, UIModelComponent, Intersection2D, Label, director, Button, SystemEventType, UIOpacityComponent } from 'cc';
+import { _decorator, Component, Node, SpriteFrame, systemEvent, SystemEvent, KeyCode, Vec3, Prefab, instantiate, CCInteger, UITransform, UIComponent, UIModelComponent, Intersection2D, Label, director, Button, SystemEventType, UIOpacityComponent, Color, color, LabelComponent, Script } from 'cc';
 const { ccclass, property } = _decorator;
 
 /**
@@ -42,16 +42,18 @@ export class GamePlay extends Component {
     dinoBoundingBox : any;
     obsBoundingBox : any;
     time = 0;
-    popTime = 150;
+    popTime = 140;
     birdPos : any;
    
     startTheGame()
     {
         this.node.getChildByName('restart').active = false;
         this.node.getChildByName('GameOver').getComponent(Label).string = 'Game Started';
+        this.node.getChildByName('GameOver').getComponent(Label).color = new Color(0,1200,);
         setTimeout( () => {
             this.node.getChildByName('GameOver').active = false;
             this.node.getChildByName('GameOver').getComponent(Label).string = 'Game Over !';
+            this.node.getChildByName('GameOver').getComponent(Label).color = new Color(1515,0,0);
         },2500)
         this.initScore = 0;
         this.addAndMoveObstacles();
@@ -62,7 +64,7 @@ export class GamePlay extends Component {
     updateScore()
     {
         this.initScore+=2;
-        this.node.getChildByName('currentScore').getComponent(Label).string =`${this.initScore}`;
+        this.node.getChildByName('currentScore').getComponent(Label).string =`Score : ${this.initScore}`;
     }
 
     addAndMoveObstacles(){
@@ -86,11 +88,14 @@ export class GamePlay extends Component {
             this.usedObstacles.forEach(element =>
                 {
                     console.log('for each called');
-                    element.setPosition(new Vec3(element.getPosition().x-3,-193.655,1))
-                    if(element.getPosition.x < -500)
+                    element.setPosition(new Vec3(element.getPosition().x-4,-193.655,1))
+                    if(element.getPosition().x < -500)
                     {
                         element.setPosition(new Vec3(548.527,-193.655,1));
                         this.arrayOfObstacles.push(element);
+                        console.log(`test  =  ` + this.arrayOfObstacles.length);
+                        this.usedObstacles.shift();
+                        console.log(`anot test ` + this.usedObstacles.length);
                     }
 
                     if(Intersection2D.rectRect(
@@ -105,7 +110,6 @@ export class GamePlay extends Component {
                             this.node.getChildByName('restart').active = true;
                         }
                 });
-                //this.node.getChildByName('Bird1').setPosition(new Vec3(this.birdPos.x-3,this.birdPos.y,this.birdPos.z));
         }
     }
 

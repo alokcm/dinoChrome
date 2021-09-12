@@ -1,0 +1,30 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "restartImg",
+    "atlas": "",
+    "rect": {
+      "x": 200,
+      "y": 200,
+      "width": 1201,
+      "height": 1201
+    },
+    "offset": {
+      "x": 0.5,
+      "y": -0.5
+    },
+    "originalSize": {
+      "width": 1600,
+      "height": 1600
+    },
+    "rotated": false,
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "texture": "9d6de4c5-f7c6-4988-932d-cf58885afd0d@6c48a",
+    "packable": true
+  }
+}

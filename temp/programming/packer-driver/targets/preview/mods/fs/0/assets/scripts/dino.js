@@ -95,12 +95,13 @@ System.register(["cc"], function (_export, _context) {
         };
 
         _proto.start = function start() {
-          this.jumpTween = tween(this.node).by(0.5, {
-            position: new Vec3(0, 290, 1)
+          this.jumpTween = tween(this.node).by(0.7, {
+            position: new Vec3(0, 270, 1)
           }, {
             easing: "smooth"
-          }).delay(0.2).by(1.2, {
-            position: new Vec3(0, -290, 1)
+          }) //.delay(0.2)
+          .by(0.7, {
+            position: new Vec3(0, -270, 1)
           }, {
             easing: "smooth"
           });

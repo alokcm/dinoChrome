@@ -1,7 +1,7 @@
 System.register(["cc"], function (_export, _context) {
   "use strict";
 
-  var _cclegacy, _decorator, Component, Node, Vec3, Prefab, instantiate, UITransform, Intersection2D, Label, director, _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2, _descriptor3, _temp, _crd, ccclass, property, GamePlay;
+  var _cclegacy, _decorator, Component, Node, Vec3, Prefab, instantiate, UITransform, Intersection2D, Label, director, Color, _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2, _descriptor3, _temp, _crd, ccclass, property, GamePlay;
 
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
 
@@ -24,6 +24,7 @@ System.register(["cc"], function (_export, _context) {
       Intersection2D = _cc.Intersection2D;
       Label = _cc.Label;
       director = _cc.director;
+      Color = _cc.Color;
     }],
     execute: function () {
       _crd = true;
@@ -70,7 +71,7 @@ System.register(["cc"], function (_export, _context) {
 
           _defineProperty(this, "time", 0);
 
-          _defineProperty(this, "popTime", 150);
+          _defineProperty(this, "popTime", 140);
 
           _defineProperty(this, "birdPos", void 0);
         }
@@ -78,9 +79,11 @@ System.register(["cc"], function (_export, _context) {
         startTheGame() {
           this.node.getChildByName('restart').active = false;
           this.node.getChildByName('GameOver').getComponent(Label).string = 'Game Started';
+          this.node.getChildByName('GameOver').getComponent(Label).color = new Color(0, 1200);
           setTimeout(() => {
             this.node.getChildByName('GameOver').active = false;
             this.node.getChildByName('GameOver').getComponent(Label).string = 'Game Over !';
+            this.node.getChildByName('GameOver').getComponent(Label).color = new Color(1515, 0, 0);
           }, 2500);
           this.initScore = 0;
           this.addAndMoveObstacles();
@@ -90,7 +93,7 @@ System.register(["cc"], function (_export, _context) {
 
         updateScore() {
           this.initScore += 2;
-          this.node.getChildByName('currentScore').getComponent(Label).string = `${this.initScore}`;
+          this.node.getChildByName('currentScore').getComponent(Label).string = `Score : ${this.initScore}`;
         }
 
         addAndMoveObstacles() {
@@ -112,11 +115,14 @@ System.register(["cc"], function (_export, _context) {
               var _this$node$getChildBy, _element$getComponent;
 
               console.log('for each called');
-              element.setPosition(new Vec3(element.getPosition().x - 3, -193.655, 1));
+              element.setPosition(new Vec3(element.getPosition().x - 4, -193.655, 1));
 
-              if (element.getPosition.x < -500) {
+              if (element.getPosition().x < -500) {
                 element.setPosition(new Vec3(548.527, -193.655, 1));
                 this.arrayOfObstacles.push(element);
+                console.log(`test  =  ` + this.arrayOfObstacles.length);
+                this.usedObstacles.shift();
+                console.log(`anot test ` + this.usedObstacles.length);
               }
 
               if (Intersection2D.rectRect((_this$node$getChildBy = this.node.getChildByName('DinoStart').getComponent(UITransform)) === null || _this$node$getChildBy === void 0 ? void 0 : _this$node$getChildBy.getBoundingBoxToWorld(), (_element$getComponent = element.getComponent(UITransform)) === null || _element$getComponent === void 0 ? void 0 : _element$getComponent.getBoundingBoxToWorld()) == true) {
@@ -127,7 +133,7 @@ System.register(["cc"], function (_export, _context) {
                 this.node.getChildByName('GameOver').active = true;
                 this.node.getChildByName('restart').active = true;
               }
-            }); //this.node.getChildByName('Bird1').setPosition(new Vec3(this.birdPos.x-3,this.birdPos.y,this.birdPos.z));
+            });
           }
         }
 

@@ -55,9 +55,9 @@ export class Dino extends Component {
 
     start () {
         this.jumpTween = tween(this.node)
-                    .by(0.5,{position : new Vec3(0,290,1)},{easing: "smooth"})
-                    .delay(0.2)
-                    .by(1.2,{position : new Vec3(0,-290,1)},{easing: "smooth"});
+                    .by(0.7,{position : new Vec3(0,270,1)},{easing: "smooth"})
+                    //.delay(0.2)
+                    .by(0.7,{position : new Vec3(0,-270,1)},{easing: "smooth"});
         this.initPos = this.node.getPosition();
     }
     onLoad()
