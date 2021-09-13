@@ -286,5 +286,315 @@
   },
   "C:\\Users\\Alok\\Documents\\dinoChrome\\assets\\sprites\\Cactus\\SmallCactus\\SmallCactus2.png.meta": {
     "time": 1631426428659.691
+  },
+  "/Users/naushad/dinoChrome/assets/mainScene.scene": {
+    "time": 1631530489416.3923,
+    "uuid": "1f8b93e0-6c10-49b5-bf8a-d281498da9d2",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/makeObsctacles.scene": {
+    "time": 1631515974469.086,
+    "uuid": "5dc931c5-9f07-4c09-ae9b-70e295c56fe3",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/prefab": {
+    "time": 1631515965974.9368,
+    "uuid": "d1f8571b-7d1a-4025-8739-1852d93438d8",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/scripts": {
+    "time": 1631506439231.2036,
+    "uuid": "b1dd94e0-e003-4721-9006-c596abbd9fc0",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/sprites": {
+    "time": 1631264151455.886,
+    "uuid": "69ac8e86-a9e5-4371-8a03-c2b2ad26ea6d",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/prefab/LargeCactus1.prefab": {
+    "time": 1631257534649.052,
+    "uuid": "2d6f378a-774a-467b-8f24-7249a9a7e30a",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/prefab/LargeCactus2.prefab": {
+    "time": 1631257542452.1536,
+    "uuid": "97091076-8884-4a06-a33a-979950efbc60",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/prefab/LargeCactus3.prefab": {
+    "time": 1631257551539.6729,
+    "uuid": "d3a1dafd-3f01-4ac7-ac4e-38c47b307de9",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/prefab/SmallCactus1.prefab": {
+    "time": 1631180345178.858,
+    "uuid": "7444a0d5-f222-4263-8496-5138f372568a",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/prefab/SmallCactus2.prefab": {
+    "time": 1631180332284.6338,
+    "uuid": "2c7187eb-6476-4077-880a-6df17f7b11f1",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/prefab/SmallCactus3.prefab": {
+    "time": 1631180254859.8064,
+    "uuid": "4dfa9326-0c41-4aa2-9191-0a8f69f5750d",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/scripts/dino.ts": {
+    "time": 1631524424494.9277,
+    "uuid": "94097d74-5ab8-4601-9f4a-275a3b413717",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/scripts/gamePlay.ts": {
+    "time": 1631525208749.0806,
+    "uuid": "db0a6452-9d2f-49c7-9c5d-ff496309c8b3",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Bird": {
+    "time": 1631091025861.724,
+    "uuid": "936ad260-93f5-4af8-a61e-434427116f6c",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Cactus": {
+    "time": 1631091269200.4739,
+    "uuid": "910ca29e-810a-4511-9069-47d55b31e217",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Dino": {
+    "time": 1631091004408.1843,
+    "uuid": "94c810e9-d7b1-47f8-bad5-49b28388c2a2",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/ground.png": {
+    "time": 1631082458393.2705,
+    "uuid": "f8c095ff-2829-4d17-b60f-0500e36fc3cd",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/lightBG.png": {
+    "time": 1631077560689.3552,
+    "uuid": "bcf33ca1-c3d8-41cd-927f-a00c5da7f512",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/restartImg.png": {
+    "time": 1631264151453.5234,
+    "uuid": "9d6de4c5-f7c6-4988-932d-cf58885afd0d",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Bird/Bird1.png": {
+    "time": 1631091025856.249,
+    "uuid": "bf30bd10-9b94-49b8-8494-6d0b1905dc22",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Bird/Bird2.png": {
+    "time": 1631091025856.6155,
+    "uuid": "16efbbe8-c610-4076-ad62-0592606a0175",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Cactus/LargeCactus": {
+    "time": 1631091279851.196,
+    "uuid": "298cf6cf-a6da-4a44-b06b-cecdb733868f",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Cactus/SmallCactus": {
+    "time": 1631091289595.488,
+    "uuid": "652558f4-73b0-4a6a-b383-fbc946dbd495",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Dino/DinoDead.png": {
+    "time": 1631090577067.7065,
+    "uuid": "1facda1c-491c-42b9-9f72-56b73a88ccc8",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Dino/DinoDuck1.png": {
+    "time": 1631090752859.6921,
+    "uuid": "b010ba2b-4a35-45ba-b50b-4649cfc674cd",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Dino/DinoDuck2.png": {
+    "time": 1631090752859.6233,
+    "uuid": "6881b955-ac11-403c-827b-e8b21be769ce",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Dino/DinoJump.png": {
+    "time": 1631090637582.5237,
+    "uuid": "0f654b9a-7dcb-4631-a206-e40d93eaf29e",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Dino/DinoRun1.png": {
+    "time": 1631090695818.1238,
+    "uuid": "7591eed4-2872-4c57-b00f-11246256b451",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Dino/DinoRun2.png": {
+    "time": 1631090695818.1768,
+    "uuid": "52e33016-9e15-461d-baa6-aa7242520b5b",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Dino/DinoStart.png": {
+    "time": 1631090604411.0562,
+    "uuid": "4a1664b8-3b11-4838-9cf2-e7792efa7ffd",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Cactus/LargeCactus/LargeCactus1.png": {
+    "time": 1631091279847.9878,
+    "uuid": "78a85c45-8dcb-4238-88af-d304990839c8",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Cactus/LargeCactus/LargeCactus2.png": {
+    "time": 1631091279847.1172,
+    "uuid": "cad9101e-e758-404c-aac1-3e7df51a5be4",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Cactus/LargeCactus/LargeCactus3.png": {
+    "time": 1631091279847.1252,
+    "uuid": "3a5151e3-c1f6-4e6d-9f4c-bb0f422ef30a",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Cactus/SmallCactus/SmallCactus1.png": {
+    "time": 1631091289592.85,
+    "uuid": "ac463007-0e9f-4c9b-a1ed-98dec84ea2fd",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Cactus/SmallCactus/SmallCactus2.png": {
+    "time": 1631091289592.8699,
+    "uuid": "487d4880-5493-4ce6-be6d-b05eb3634467",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Cactus/SmallCactus/SmallCactus3.png": {
+    "time": 1631091289592.7874,
+    "uuid": "c7a45356-ad7a-4697-bee5-6521a9a5e2d5",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/prefab.meta": {
+    "time": 1631093624034.8413
+  },
+  "/Users/naushad/dinoChrome/assets/scripts.meta": {
+    "time": 1631078303447.3218
+  },
+  "/Users/naushad/dinoChrome/assets/sprites.meta": {
+    "time": 1631077421794.7354
+  },
+  "/Users/naushad/dinoChrome/assets/makeObsctacles.scene.meta": {
+    "time": 1631086662091.0444
+  },
+  "/Users/naushad/dinoChrome/assets/mainScene.scene.meta": {
+    "time": 1631079208454.066
+  },
+  "/Users/naushad/dinoChrome/assets/prefab/LargeCactus3.prefab.meta": {
+    "time": 1631100445208.2512
+  },
+  "/Users/naushad/dinoChrome/assets/prefab/LargeCactus1.prefab.meta": {
+    "time": 1631172078918.2527
+  },
+  "/Users/naushad/dinoChrome/assets/prefab/LargeCactus2.prefab.meta": {
+    "time": 1631172075440.1099
+  },
+  "/Users/naushad/dinoChrome/assets/scripts/dino.ts.meta": {
+    "time": 1631078321542.8533
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Bird.meta": {
+    "time": 1631091016769.373
+  },
+  "/Users/naushad/dinoChrome/assets/scripts/gamePlay.ts.meta": {
+    "time": 1631091405921.6516
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Cactus.meta": {
+    "time": 1631091236963.725
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Dino.meta": {
+    "time": 1631090988881.8738
+  },
+  "/Users/naushad/dinoChrome/assets/prefab/SmallCactus2.prefab.meta": {
+    "time": 1631100447428.4502
+  },
+  "/Users/naushad/dinoChrome/assets/prefab/SmallCactus1.prefab.meta": {
+    "time": 1631093627962.0608
+  },
+  "/Users/naushad/dinoChrome/assets/prefab/SmallCactus3.prefab.meta": {
+    "time": 1631100449250.3782
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/lightBG.png.meta": {
+    "time": 1631077560705.5425
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Cactus/LargeCactus.meta": {
+    "time": 1631091259836.084
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Cactus/SmallCactus.meta": {
+    "time": 1631091269204.0457
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/ground.png.meta": {
+    "time": 1631082458419.0645
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Bird/Bird1.png.meta": {
+    "time": 1631091025911.5803
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Bird/Bird2.png.meta": {
+    "time": 1631091025878.6118
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/restartImg.png.meta": {
+    "time": 1631264151657.534
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Dino/DinoDuck2.png.meta": {
+    "time": 1631090752876.702
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Dino/DinoDead.png.meta": {
+    "time": 1631090577085.035
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Dino/DinoDuck1.png.meta": {
+    "time": 1631090752903.5044
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Dino/DinoJump.png.meta": {
+    "time": 1631090637610.6885
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Dino/DinoRun1.png.meta": {
+    "time": 1631090695833.88
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Cactus/LargeCactus/LargeCactus1.png.meta": {
+    "time": 1631091279891.3867
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Dino/DinoRun2.png.meta": {
+    "time": 1631090695852.0227
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Dino/DinoStart.png.meta": {
+    "time": 1631090604427.934
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Cactus/LargeCactus/LargeCactus2.png.meta": {
+    "time": 1631091279864.9895
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Cactus/LargeCactus/LargeCactus3.png.meta": {
+    "time": 1631091279877.4883
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Cactus/SmallCactus/SmallCactus3.png.meta": {
+    "time": 1631091289623.274
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Cactus/SmallCactus/SmallCactus1.png.meta": {
+    "time": 1631091289606.6458
+  },
+  "/Users/naushad/dinoChrome/assets/sprites/Cactus/SmallCactus/SmallCactus2.png.meta": {
+    "time": 1631091289642.5366
+  },
+  "/Users/naushad/dinoChrome/assets/prefab/Bird1.prefab": {
+    "time": 1631522884465.711,
+    "uuid": "baca468a-c55e-4b11-abbb-0ab976f6d9df",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/prefab/Bird1.prefab.meta": {
+    "time": 1631515965978.498
+  },
+  "/Users/naushad/dinoChrome/assets/animation": {
+    "time": 1631522877701.125,
+    "uuid": "fb861406-f8f9-48d4-99fc-51ed64650b74",
+    "missing": false
+  },
+  "/Users/naushad/dinoChrome/assets/animation.meta": {
+    "time": 1631522187132.354
+  },
+  "/Users/naushad/dinoChrome/assets/animation/birdAnimation.anim.meta": {
+    "time": 1631522200159.5752
+  },
+  "/Users/naushad/dinoChrome/assets/animation.anim.meta": {
+    "time": 1631522232174.6194
   }
 }

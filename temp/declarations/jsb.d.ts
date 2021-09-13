@@ -1,1 +1,1 @@
-/// <reference path="C:\CocosDashboard_1.0.17\resources\.editors\Creator\3.3.0\resources\resources\3d\engine\@types\jsb.d.ts"/>
+/// <reference path="/Applications/CocosCreator/Creator/3.3.0/CocosCreator.app/Contents/Resources/resources/3d/engine/@types/jsb.d.ts"/>

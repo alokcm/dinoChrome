@@ -66,12 +66,14 @@ System.register(["cc"], function (_export, _context) {
           _initializerDefineProperty(this, "hurdleType", _descriptor, this);
 
           _initializerDefineProperty(this, "hurdle_image", _descriptor2, this);
+
+          _defineProperty(this, "startJump", null);
         }
 
         moveUp(event) {
           switch (event.keyCode) {
             case KeyCode.SPACE:
-              if (this.node.position.y == this.initPos.y) {
+              if (this.node.position.y == this.initPos.y && this.startJump == true) {
                 this.jumpTween.start();
               }
 
@@ -79,13 +81,12 @@ System.register(["cc"], function (_export, _context) {
         }
 
         start() {
-          this.jumpTween = tween(this.node).by(0.7, {
-            position: new Vec3(0, 270, 1)
+          this.jumpTween = tween(this.node).by(0.4, {
+            position: new Vec3(0, 235, 1)
           }, {
             easing: "smooth"
-          }) //.delay(0.2)
-          .by(0.7, {
-            position: new Vec3(0, -270, 1)
+          }).by(0.4, {
+            position: new Vec3(0, -235, 1)
           }, {
             easing: "smooth"
           });

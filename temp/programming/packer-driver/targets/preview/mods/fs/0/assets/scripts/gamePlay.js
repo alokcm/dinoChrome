@@ -1,7 +1,7 @@
 System.register(["cc"], function (_export, _context) {
   "use strict";
 
-  var _cclegacy, _decorator, Component, Node, Vec3, Prefab, instantiate, UITransform, Intersection2D, Label, director, Color, _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2, _descriptor3, _temp, _crd, ccclass, property, GamePlay;
+  var _cclegacy, _decorator, Component, Node, Vec3, Prefab, instantiate, UITransform, Intersection2D, Label, Color, _dec, _dec2, _dec3, _dec4, _class, _class2, _descriptor, _descriptor2, _descriptor3, _temp, _crd, ccclass, property, GamePlay;
 
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
 
@@ -29,7 +29,6 @@ System.register(["cc"], function (_export, _context) {
       UITransform = _cc.UITransform;
       Intersection2D = _cc.Intersection2D;
       Label = _cc.Label;
-      director = _cc.director;
       Color = _cc.Color;
     }],
     execute: function () {
@@ -83,9 +82,11 @@ System.register(["cc"], function (_export, _context) {
 
           _defineProperty(_assertThisInitialized(_this), "time", 0);
 
-          _defineProperty(_assertThisInitialized(_this), "popTime", 140);
+          _defineProperty(_assertThisInitialized(_this), "popTime", 60);
 
           _defineProperty(_assertThisInitialized(_this), "birdPos", void 0);
+
+          _defineProperty(_assertThisInitialized(_this), "scriptGet", void 0);
 
           return _this;
         }
@@ -97,13 +98,14 @@ System.register(["cc"], function (_export, _context) {
 
           this.node.getChildByName('restart').active = false;
           this.node.getChildByName('GameOver').getComponent(Label).string = 'Game Started';
-          this.node.getChildByName('GameOver').getComponent(Label).color = new Color(0, 1200);
+          this.node.getChildByName('GameOver').getComponent(Label).color = new Color(0, 1200, 0);
           setTimeout(function () {
             _this2.node.getChildByName('GameOver').active = false;
             _this2.node.getChildByName('GameOver').getComponent(Label).string = 'Game Over !';
-            _this2.node.getChildByName('GameOver').getComponent(Label).color = new Color(1515, 0, 0);
-          }, 2500);
+            _this2.node.getChildByName('GameOver').getComponent(Label).color = new Color(255, 0, 0);
+          }, 1000);
           this.initScore = 0;
+          this.scriptGet.startJump = true;
           this.addAndMoveObstacles();
           this.schedule(this.updateScore, 0.3);
           this.schedule(this.addAndMoveObstacles, 0.001);
@@ -120,7 +122,8 @@ System.register(["cc"], function (_export, _context) {
           if (this.popTime == this.time) {
             this.time = 0;
             var popped = this.arrayOfObstacles.shift();
-            popped.setPosition(new Vec3(548.527, -193.655, 1));
+            var cp = popped.getPosition();
+            popped.setPosition(new Vec3(550.527, cp.y, 1));
             this.usedObstacles.push(popped);
           }
 
@@ -134,31 +137,32 @@ System.register(["cc"], function (_export, _context) {
             this.usedObstacles.forEach(function (element) {
               var _this3$node$getChildB, _element$getComponent;
 
+              var currPos = element.getPosition();
               console.log('for each called');
-              element.setPosition(new Vec3(element.getPosition().x - 4, -193.655, 1));
+              element.setPosition(new Vec3(currPos.x - 11, currPos.y, 1));
 
               if (element.getPosition().x < -500) {
-                element.setPosition(new Vec3(548.527, -193.655, 1));
+                element.setPosition(new Vec3(550.527, currPos.y, 1));
+                console.log(element.getPosition());
 
                 _this3.arrayOfObstacles.push(element);
 
-                console.log("test  =  " + _this3.arrayOfObstacles.length);
-
                 _this3.usedObstacles.shift();
-
-                console.log("anot test " + _this3.usedObstacles.length);
               }
 
               if (Intersection2D.rectRect((_this3$node$getChildB = _this3.node.getChildByName('DinoStart').getComponent(UITransform)) === null || _this3$node$getChildB === void 0 ? void 0 : _this3$node$getChildB.getBoundingBoxToWorld(), (_element$getComponent = element.getComponent(UITransform)) === null || _element$getComponent === void 0 ? void 0 : _element$getComponent.getBoundingBoxToWorld()) == true) {
-                console.log('collsion done');
+                console.log('collision done');
 
                 _this3.unschedule(_this3.addAndMoveObstacles);
 
                 _this3.unschedule(_this3.updateScore);
 
-                director.pause();
                 _this3.node.getChildByName('GameOver').active = true;
                 _this3.node.getChildByName('restart').active = true;
+
+                _this3.scriptGet.jumpTween.stop();
+
+                _this3.scriptGet.startJump = false;
               }
             });
           }
@@ -167,16 +171,15 @@ System.register(["cc"], function (_export, _context) {
         _proto.restartGame = function restartGame() {
           var _this4 = this;
 
-          director.resume();
           console.log('button clicked');
           console.log(this.usedObstacles);
           this.usedObstacles.forEach(function (element) {
-            element.setPosition(new Vec3(548.527, -193.655, 1));
+            var curPos = element.getPosition();
+            element.setPosition(new Vec3(550.527, curPos.y, 1));
 
             _this4.arrayOfObstacles.push(element);
           });
           this.usedObstacles = [];
-          console.log(this.usedObstacles);
           this.dinoBoundingBox = this.node.getChildByName('DinoStart').setPosition(new Vec3(-337.263, -200.634, 1));
           this.startTheGame();
         };
@@ -188,11 +191,19 @@ System.register(["cc"], function (_export, _context) {
             var j = Math.floor(Math.random() * (this.cactusPrefab.length - 1 - 0 + 1)) + 0;
             this.arrayOfObstacles[i] = instantiate(this.cactusPrefab[j]);
             this.node.addChild(this.arrayOfObstacles[i]);
-            this.arrayOfObstacles[i].setPosition(new Vec3(548.527, -193.655, 1));
+            console.log('j = ' + j);
+
+            if (j != 6) {
+              this.arrayOfObstacles[i].setPosition(new Vec3(550.527, -193.655, 1));
+            } else {
+              console.log(' 6 detected');
+              this.arrayOfObstacles[i].setPosition(new Vec3(550.769, -150.304, 1));
+            }
           }
 
           this.dinoBoundingBox = this.node.getChildByName('DinoStart').getComponent(UITransform).getBoundingBoxToWorld();
-          this.birdPos = this.node.getChildByName('Bird1').getPosition();
+          this.scriptGet = this.node.getChildByName('DinoStart').getComponent('Dino');
+          console.log("test script : " + this.scriptGet);
           this.startTheGame();
         };
 

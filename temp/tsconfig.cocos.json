@@ -6,15 +6,15 @@
     "strict": true,
     "types": [
       "./temp/declarations/cc.env",
-      "./temp/declarations/cc",
-      "./temp/declarations/jsb"
+      "./temp/declarations/jsb",
+      "./temp/declarations/cc"
     ],
     "paths": {
       "db://internal/*": [
-        "C:\\CocosDashboard_1.0.17\\resources\\.editors\\Creator\\3.3.0\\resources\\resources\\3d\\engine\\editor\\assets\\*"
+        "/Applications/CocosCreator/Creator/3.3.0/CocosCreator.app/Contents/Resources/resources/3d/engine/editor/assets/*"
       ],
       "db://assets/*": [
-        "C:\\Users\\Alok\\Documents\\dinoChrome\\assets\\*"
+        "/Users/naushad/dinoChrome/assets/*"
       ]
     },
     "experimentalDecorators": true,

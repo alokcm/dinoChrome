@@ -1,6 +1,6 @@
 {
   "cce:/internal/x/cc": {
-    "mTimestamp": 24109.663700000383,
+    "mTimestamp": 11028.298535000067,
     "chunkId": "quick-pack:/cce/internal/x/cc.js",
     "imports": [
       {
@@ -389,11 +389,11 @@
     ]
   },
   "cce:/internal/x/prerequisite-imports": {
-    "mTimestamp": 51523.83580000047,
+    "mTimestamp": 18657960.712311,
     "chunkId": "quick-pack:/cce/internal/x/prerequisite-imports.js",
     "imports": [
       {
-        "value": "file:///C:/Users/Alok/Documents/dinoChrome/assets/scripts/dino.ts",
+        "value": "file:///Users/naushad/dinoChrome/assets/scripts/dino.ts",
         "rewritten": "__unresolved_0",
         "loc": {
           "start": {
@@ -402,21 +402,21 @@
           },
           "end": {
             "line": 5,
-            "column": 102
+            "column": 92
           }
         }
       },
       {
-        "value": "file:///C:/Users/Alok/Documents/dinoChrome/assets/scripts/gamePlay.ts",
+        "value": "file:///Users/naushad/dinoChrome/assets/scripts/gamePlay.ts",
         "rewritten": "__unresolved_1",
         "loc": {
           "start": {
             "line": 5,
-            "column": 118
+            "column": 108
           },
           "end": {
             "line": 5,
-            "column": 189
+            "column": 169
           }
         }
       }
@@ -427,11 +427,11 @@
     "resolvedImports": [
       {
         "isExternal": false,
-        "url": "file:///C:/Users/Alok/Documents/dinoChrome/assets/scripts/dino.ts"
+        "url": "file:///Users/naushad/dinoChrome/assets/scripts/dino.ts"
       },
       {
         "isExternal": false,
-        "url": "file:///C:/Users/Alok/Documents/dinoChrome/assets/scripts/gamePlay.ts"
+        "url": "file:///Users/naushad/dinoChrome/assets/scripts/gamePlay.ts"
       }
     ]
   },
@@ -557,6 +557,76 @@
           "end": {
             "line": 2,
             "column": 294
+          }
+        }
+      }
+    ],
+    "modLoMetadata": {
+      "type": "esm"
+    },
+    "resolvedImports": [
+      {
+        "isExternal": false,
+        "url": "cce:/internal/x/cc"
+      },
+      {
+        "isExternal": false,
+        "url": "cce:/internal/x/cc"
+      }
+    ]
+  },
+  "file:///Users/naushad/dinoChrome/assets/scripts/gamePlay.ts": {
+    "mTimestamp": 1631525208749.0806,
+    "chunkId": "assets/scripts/gamePlay.js",
+    "imports": [
+      {
+        "value": "cc"
+      },
+      {
+        "value": "cc",
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 297
+          },
+          "end": {
+            "line": 2,
+            "column": 301
+          }
+        }
+      }
+    ],
+    "modLoMetadata": {
+      "type": "esm"
+    },
+    "resolvedImports": [
+      {
+        "isExternal": false,
+        "url": "cce:/internal/x/cc"
+      },
+      {
+        "isExternal": false,
+        "url": "cce:/internal/x/cc"
+      }
+    ]
+  },
+  "file:///Users/naushad/dinoChrome/assets/scripts/dino.ts": {
+    "mTimestamp": 1631524424494.9277,
+    "chunkId": "assets/scripts/dino.js",
+    "imports": [
+      {
+        "value": "cc"
+      },
+      {
+        "value": "cc",
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 148
+          },
+          "end": {
+            "line": 2,
+            "column": 152
           }
         }
       }
